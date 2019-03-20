@@ -42,4 +42,4 @@ movies_df['difference_score']=total_difference
 sorted_movie_list=movies_df.sort_values('difference_score')
 #6. Display 5 most similar movies
 print("The 5 most similar movies are:")
-print(sorted_movie_list[['title','difference_score',"genre"]][0:5])
+print(sorted_movie_list[['title','difference_score']][0:5])

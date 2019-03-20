@@ -1,6 +1,7 @@
 import sqlite3
 import sys
 from genremapper import val_input
+import pandas as pd
 #remember to check dbname when connecting to database
 
 def runsqlquery(database_name1,query):
@@ -24,3 +25,8 @@ def runsqlquery(database_name1,query):
 #1. Convert .CSV files to pandas dataframes
 #2. Add respective genre code for a mapping
 #3. Convert DataFrame into SQLite Database
+reviews=pd.read_csv("movie_ratings_data_set.csv")
+movies=pd.read_csv("movies.csv",index_col="movie_id")
+conn=sqlite3.connect("maindb")
+moviesdb=movies.to_sql("movies",conn)
+reviewsdb=reviews.to_sql("reviews",conn)
